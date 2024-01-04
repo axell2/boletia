@@ -1,108 +1,103 @@
-<div class="container">
-    <div class="col-md-12">
-        <div class="col-md-4">
-            <br>PRODUCTO
-            <br>team-producto@boletia.com
-            <br>
-            <br>PRODUCTO
-            <br>
-            <br>Prueba ruby & rails Support Engineer
-            <br>FECHA: 22/12/2022
-            <br>
-            <br>PRODUCTO
-            team-producto@boletia.com
-            <br>Crear un servicio web que tenga las siguientes funcionalidades:
-            <br>
-            <br>1. Cada X minutos (a establecer en archivo de configuración inicial) consultar el servicio rest de la
-            <br>pagina https://freecurrencyapi.net (tramitar el api-key necesario en la pagina
-            <br>https://freecurrencyapi.net/register) para tener acceso al API que ofrece y obtener el valor actual
-            <br>de todas las divisas que ofrece el servicio (latest rates).
-            <br>
-            <br>2. Guardar los datos obtenidos de las divisas en una tabla dentro de una base de datos PostgreSQL
-            <br>donde quede asociado el timestamp que regresa el servicio con el valor de cada una de las
-            <br>divisas devueltas por las llamadas.
-            <br>
-            <br>3. Registrar en otra tabla dentro de la misma base de datos la hora de ejecución de cada una de las
-            <br>llamadas hacia https://freecurrencyapi.net y la duración de la misma.
-            <br>
-            <br>4. Establecer un timeout de x segundos (establecer en archivo de configuración inicial) para la
-            <br>llamada a https://freecurrencyapi.net, cancelar la llamada si se sobrepasa este timeout y registrar
-            <br>el intento fallido en la tabla que lleva el registro de llamadas hacia https://freecurrencyapi.net.
-            <br>
-            <br>5. Crear un endpoint con las siguientes características:
-            <br>
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td>Path </td>
-                        <td>/currencies/<CURRENCY>?<urlparams></urlparams></td>
-                    </tr>
-                    <tr>
-                        <td>Method</td>
-                        <td>GET</td>
-                    </tr>
-                    <tr>
-                        <td>urlparams</td>
-                        <td>
-                            finit (fecha y hora inicial) Opcional
-                            <br>
-                            fend (fecha y hora final)Opcional
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>HTTP Code</td>
-                        <td>Establecer los códigos de retorno http apropiados
-                            <br>para cada caso: Ok, Bad Request, System Error, Not Found ...
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+<br>PRODUCTO
+<br>team-producto@boletia.com
+<br>
+<br>PRODUCTO
+<br>
+<br>Prueba ruby & rails Support Engineer
+<br>FECHA: 22/12/2022
+<br>
+<br>PRODUCTO
+team-producto@boletia.com
+<br>Crear un servicio web que tenga las siguientes funcionalidades:
+<br>
+<br>1. Cada X minutos (a establecer en archivo de configuración inicial) consultar el servicio rest de la
+<br>pagina https://freecurrencyapi.net (tramitar el api-key necesario en la pagina
+<br>https://freecurrencyapi.net/register) para tener acceso al API que ofrece y obtener el valor actual
+<br>de todas las divisas que ofrece el servicio (latest rates).
+<br>
+<br>2. Guardar los datos obtenidos de las divisas en una tabla dentro de una base de datos PostgreSQL
+<br>donde quede asociado el timestamp que regresa el servicio con el valor de cada una de las
+<br>divisas devueltas por las llamadas.
+<br>
+<br>3. Registrar en otra tabla dentro de la misma base de datos la hora de ejecución de cada una de las
+<br>llamadas hacia https://freecurrencyapi.net y la duración de la misma.
+<br>
+<br>4. Establecer un timeout de x segundos (establecer en archivo de configuración inicial) para la
+<br>llamada a https://freecurrencyapi.net, cancelar la llamada si se sobrepasa este timeout y registrar
+<br>el intento fallido en la tabla que lleva el registro de llamadas hacia https://freecurrencyapi.net.
+<br>
+<br>5. Crear un endpoint con las siguientes características:
+<br>
+<table class="table">
+    <tbody>
+        <tr>
+            <td>Path </td>
+            <td>/currencies/<CURRENCY>?<urlparams></urlparams></td>
+        </tr>
+        <tr>
+            <td>Method</td>
+            <td>GET</td>
+        </tr>
+        <tr>
+            <td>urlparams</td>
+            <td>
+                finit (fecha y hora inicial) Opcional
+                <br>
+                fend (fecha y hora final)Opcional
 
-            <br>
-            <br>Notas <CURRENCY> se refiere a los 3 caracteres de las diferentes divisas o a
-            <br>la palabra all (todas las divisas).
-            <br><finit> Se refiere a la fecha inicial de la cual se quiere
-            <br>saber los valores de las divisas, si no está presente este
-            <br>valor tomar como valor inicial la primera fecha que se
-            <br>tenga disponible en la base de datos.
-            <br><fend> Se refiere a la fecha final de la cual se quiere
-            <br>saber los valores de las divisas, si no está presente este
-            <br>valor tomar como valor final la última fecha que se tenga
-            <br>disponible en la base de datos.
-            <br>El formato de finit y fend deberá ser
-            <br>“YYYY-MM-DDThh:mm:ss”
-            <br>
-            <br>PRODUCTO
-            <br>
-            <br>team-producto@boletia.com
-            <br>
-            <br>Ejemplos válidos de url:
-            <br>
-            <br>/currencies/mxn?finit=2021-10-28T18:15:00&fend=2021-10-28T20:15:00
-            <br>
-            <br>/currencies/eur?fend=2021-10-28T20:15:00
-            <br>
-            <br>/currencies/all
-            <br>
-            <br>Ejemplos no válidos de url:
-            <br>/currencies/123
-            <br>/currencies/mx
-            <br>
-            <br>6. Crear un archivo de configuración que será leído por el servicio al momento del arranque donde se
-            <br>deben especificar los siguientes datos:
-            <br>
-            <br>● api-key para el servicio de https://freecurrencyapi.net
-            <br>● Intervalo de minutos entre cada llamada hacia https://freecurrencyapi.net
-            <br>● Timeout en segundos para las llamadas hacia https://freecurrencyapi.net
-            <br>● Datos para conectarse a la base de datos.
-            <br>
-            <br>7. Escribir las pruebas unitarias para obtener un coverage >%70
-            <br>
-            <br>8. Entregar un archivo .sql con la definición de tablas.
-            <br>
-            <br>9. El servicio debe contar con su repositorio público en GitHub. Por ende,el servicio debe estar
-            <br>versionado de principio a fin.
-        </div>
-    </div>
-</div>
+            </td>
+        </tr>
+        <tr>
+            <td>HTTP Code</td>
+            <td>Establecer los códigos de retorno http apropiados
+                <br>para cada caso: Ok, Bad Request, System Error, Not Found ...
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<br>Notas <CURRENCY> se refiere a los 3 caracteres de las diferentes divisas o a
+<br>la palabra all (todas las divisas).
+<br><finit> Se refiere a la fecha inicial de la cual se quiere
+<br>saber los valores de las divisas, si no está presente este
+<br>valor tomar como valor inicial la primera fecha que se
+<br>tenga disponible en la base de datos.
+<br><fend> Se refiere a la fecha final de la cual se quiere
+<br>saber los valores de las divisas, si no está presente este
+<br>valor tomar como valor final la última fecha que se tenga
+<br>disponible en la base de datos.
+<br>El formato de finit y fend deberá ser
+<br>“YYYY-MM-DDThh:mm:ss”
+<br>
+<br>PRODUCTO
+<br>
+<br>team-producto@boletia.com
+<br>
+<br>Ejemplos válidos de url:
+<br>
+<br>/currencies/mxn?finit=2021-10-28T18:15:00&fend=2021-10-28T20:15:00
+<br>
+<br>/currencies/eur?fend=2021-10-28T20:15:00
+<br>
+<br>/currencies/all
+<br>
+<br>Ejemplos no válidos de url:
+<br>/currencies/123
+<br>/currencies/mx
+<br>
+<br>6. Crear un archivo de configuración que será leído por el servicio al momento del arranque donde se
+<br>deben especificar los siguientes datos:
+<br>
+<br>● api-key para el servicio de https://freecurrencyapi.net
+<br>● Intervalo de minutos entre cada llamada hacia https://freecurrencyapi.net
+<br>● Timeout en segundos para las llamadas hacia https://freecurrencyapi.net
+<br>● Datos para conectarse a la base de datos.
+<br>
+<br>7. Escribir las pruebas unitarias para obtener un coverage >%70
+<br>
+<br>8. Entregar un archivo .sql con la definición de tablas.
+<br>
+<br>9. El servicio debe contar con su repositorio público en GitHub. Por ende,el servicio debe estar
+<br>versionado de principio a fin.
