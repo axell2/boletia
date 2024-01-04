@@ -1,0 +1,23 @@
+<%= @response%>
+<h1>Informacion de llamadas a la plataforma</h1>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Request time</th>
+      <th>Request duration</th>
+      <th>Code</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <%@requests.each do |request|%>
+      <tr>
+        <td><%=request.start%></td>
+        <td><%=request.duration%></td>
+        <td><%=request.code%></td>
+     
+      </tr>
+    <%end%>
+  </tbody>
+</table>

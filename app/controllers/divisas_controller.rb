@@ -14,16 +14,12 @@ class DivisasController <  ApplicationController
   
   def get_latest
 
-    meta = Latest.get_late_meta
-    @meta = meta["last_updated_at"]
-    latests = Latest.get_latests_currencies
-    latests.each do |lates|
-      lates.each do |item|
-        if item["code"] != nil
-          Latest.save_latests_currencies(item,@meta)
-        end
-      end
-    end
+    Latest.response_data
     @latest = Latest.all
   end
+
+  def request_data
+    @requests = RequestDatum.all
+  end
+
 end

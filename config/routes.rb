@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "divisas" => "divisas#get_divisas", as: :get_divisas
   get "latest" => "divisas#get_latest", as: :get_latest
+  get "request_data" => "divisas#request_data",as: :request_data
   # Defines the root path route ("/")
   root "main#home"
 end
