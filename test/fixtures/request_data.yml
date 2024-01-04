@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  duration: 9.99
+  start: 2024-01-04 07:29:47
+
+two:
+  duration: 9.99
+  start: 2024-01-04 07:29:47

@@ -5,9 +5,16 @@ ruby "3.2.2"
 # Use main development branch of Rails
 gem "rails", github: "rails/rails", branch: "main"
 
+#schedule
+gem 'whenever', require: false
+
+#delayed jobs
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-
+#set timeout variables
+gem "rack-timeout"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
